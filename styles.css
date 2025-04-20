@@ -1,0 +1,425 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+:root {
+    /* 莫兰迪色系 */
+    --primary-color: #b4a397; /* 主色调-浅棕灰 */
+    --secondary-color: #a5b1aa; /* 辅助色-灰绿 */
+    --bg-color: #f5f3f0; /* 背景色-米灰 */
+    --text-color: #4a4a4a; /* 文字色-深灰 */
+    --border-color: #d9d3cc; /* 边框色-浅灰 */
+    
+    /* 标签颜色 */
+    --season-color: #d8c9a7; /* 季节标签-浅黄 */
+    --scene-color: #a2c5d0; /* 场景标签-浅蓝 */
+    --style-color: #c8d6ca; /* 风格标签-浅绿 */
+    --material-color: #d9c5c1; /* 材质标签-浅粉 */
+    --custom-color: #b9b9b9; /* 自定义标签-灰色 */
+    
+    /* 布局尺寸 */
+    --sidebar-width: 20%;
+    --main-width: 60%;
+    --upload-width: 20%;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* 左侧导航栏样式 */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: white;
+    border-right: 1px solid var(--border-color);
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.search-container {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.search-container input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+
+.search-container button {
+    padding: 8px 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.selected-tags {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.selected-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.selected-tag .remove {
+    margin-left: 6px;
+    cursor: pointer;
+}
+
+.filter-category {
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.category-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.tag {
+    padding: 6px 10px;
+    border-radius: 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.tag:hover {
+    transform: scale(1.05);
+}
+
+#season-tags .tag {
+    background-color: var(--season-color);
+    color: var(--text-color);
+}
+
+#scene-tags .tag {
+    background-color: var(--scene-color);
+    color: var(--text-color);
+}
+
+#style-tags .tag {
+    background-color: var(--style-color);
+    color: var(--text-color);
+}
+
+#material-tags .tag {
+    background-color: var(--material-color);
+    color: var(--text-color);
+}
+
+/* 中间主内容区样式 */
+.main-content {
+    width: var(--main-width);
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.main-content h1 {
+    margin-bottom: 30px;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.clothes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.clothes-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+}
+
+.clothes-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.clothes-card:hover .card-image img {
+    transform: scale(1.1);
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.card-tag {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 12px;
+}
+
+.card-tag.season {
+    background-color: var(--season-color);
+}
+
+.card-tag.scene {
+    background-color: var(--scene-color);
+}
+
+.card-tag.style {
+    background-color: var(--style-color);
+}
+
+.card-tag.material {
+    background-color: var(--material-color);
+}
+
+.card-tag.custom {
+    background-color: var(--custom-color);
+}
+
+.card-time {
+    font-size: 12px;
+    color: #999;
+    text-align: right;
+}
+
+/* 右侧上传区样式 */
+.upload-section {
+    width: var(--upload-width);
+    background-color: white;
+    border-left: 1px solid var(--border-color);
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.upload-section h2 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.upload-area {
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.upload-area:hover {
+    background-color: #f9f9f9;
+}
+
+.upload-area i {
+    font-size: 36px;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.upload-area p {
+    color: #999;
+}
+
+.upload-area.active {
+    border-color: var(--primary-color);
+    background-color: rgba(180, 163, 151, 0.1);
+}
+
+.upload-area.has-preview {
+    border: none;
+    padding: 0;
+    height: 220px;
+    position: relative;
+}
+
+.upload-area.has-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.upload-area.has-preview .remove-image {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.required {
+    color: #e74c3c;
+}
+
+.tag-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.option-tag {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.option-tag:hover {
+    opacity: 0.8;
+}
+
+.option-tag.selected {
+    font-weight: bold;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.option-tag.season {
+    background-color: var(--season-color);
+}
+
+.option-tag.scene {
+    background-color: var(--scene-color);
+}
+
+.option-tag.style {
+    background-color: var(--style-color);
+}
+
+.option-tag.material {
+    background-color: var(--material-color);
+}
+
+#submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+#submit-btn:hover {
+    background-color: #a39081;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .sidebar, .main-content, .upload-section {
+        width: 100%;
+    }
+    
+    .sidebar {
+        order: 2;
+        border-right: none;
+        border-top: 1px solid var(--border-color);
+    }
+    
+    .main-content {
+        order: 1;
+    }
+    
+    .upload-section {
+        order: 3;
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+        height: auto;
+        position: static;
+    }
+} 

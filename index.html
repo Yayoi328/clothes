@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时尚衣橱 - 穿搭收藏与管理</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 左侧导航栏 -->
+        <aside class="sidebar">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="搜索服饰名称...">
+                <button id="search-button"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <div class="selected-tags" id="selected-tags">
+                <!-- 已选标签会显示在这里 -->
+            </div>
+            
+            <div class="filter-section">
+                <div class="filter-category">
+                    <div class="category-header" data-category="season">
+                        <span>季节</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="category-tags" id="season-tags">
+                        <span class="tag" data-tag="春季">春季</span>
+                        <span class="tag" data-tag="夏季">夏季</span>
+                        <span class="tag" data-tag="秋季">秋季</span>
+                        <span class="tag" data-tag="冬季">冬季</span>
+                    </div>
+                </div>
+                
+                <div class="filter-category">
+                    <div class="category-header" data-category="scene">
+                        <span>场景</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="category-tags" id="scene-tags">
+                        <span class="tag" data-tag="商务">商务</span>
+                        <span class="tag" data-tag="约会">约会</span>
+                        <span class="tag" data-tag="休闲">休闲</span>
+                        <span class="tag" data-tag="运动">运动</span>
+                        <span class="tag" data-tag="派对">派对</span>
+                        <span class="tag" data-tag="职场">职场</span>
+                    </div>
+                </div>
+                
+                <div class="filter-category">
+                    <div class="category-header" data-category="style">
+                        <span>风格</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="category-tags" id="style-tags">
+                        <span class="tag" data-tag="复古">复古</span>
+                        <span class="tag" data-tag="简约">简约</span>
+                        <span class="tag" data-tag="街头">街头</span>
+                        <span class="tag" data-tag="优雅">优雅</span>
+                        <span class="tag" data-tag="文艺">文艺</span>
+                        <span class="tag" data-tag="运动">运动</span>
+                    </div>
+                </div>
+                
+                <div class="filter-category">
+                    <div class="category-header" data-category="material">
+                        <span>材质</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="category-tags" id="material-tags">
+                        <span class="tag" data-tag="棉">棉</span>
+                        <span class="tag" data-tag="丝绸">丝绸</span>
+                        <span class="tag" data-tag="牛仔">牛仔</span>
+                        <span class="tag" data-tag="麻">麻</span>
+                        <span class="tag" data-tag="羊毛">羊毛</span>
+                        <span class="tag" data-tag="皮革">皮革</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- 中间主内容区 -->
+        <main class="main-content">
+            <h1>我的时尚衣橱</h1>
+            <div class="clothes-container" id="clothes-container">
+                <!-- 服饰卡片会动态加载到这里 -->
+            </div>
+        </main>
+        
+        <!-- 右侧上传区 -->
+        <aside class="upload-section">
+            <h2>添加新服饰</h2>
+            <div class="upload-area" id="upload-area">
+                <i class="fas fa-plus"></i>
+                <p>点击或拖拽图片到此处</p>
+                <input type="file" id="file-upload" accept="image/*" hidden>
+            </div>
+            
+            <form id="upload-form">
+                <div class="form-group">
+                    <label for="item-name">名称 <span class="required">*</span></label>
+                    <input type="text" id="item-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>季节</label>
+                    <div class="tag-options">
+                        <span class="option-tag season" data-tag="春季">春季</span>
+                        <span class="option-tag season" data-tag="夏季">夏季</span>
+                        <span class="option-tag season" data-tag="秋季">秋季</span>
+                        <span class="option-tag season" data-tag="冬季">冬季</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>场景</label>
+                    <div class="tag-options">
+                        <span class="option-tag scene" data-tag="商务">商务</span>
+                        <span class="option-tag scene" data-tag="约会">约会</span>
+                        <span class="option-tag scene" data-tag="休闲">休闲</span>
+                        <span class="option-tag scene" data-tag="运动">运动</span>
+                        <span class="option-tag scene" data-tag="派对">派对</span>
+                        <span class="option-tag scene" data-tag="职场">职场</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>风格</label>
+                    <div class="tag-options">
+                        <span class="option-tag style" data-tag="复古">复古</span>
+                        <span class="option-tag style" data-tag="简约">简约</span>
+                        <span class="option-tag style" data-tag="街头">街头</span>
+                        <span class="option-tag style" data-tag="优雅">优雅</span>
+                        <span class="option-tag style" data-tag="文艺">文艺</span>
+                        <span class="option-tag style" data-tag="运动">运动</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>材质</label>
+                    <div class="tag-options">
+                        <span class="option-tag material" data-tag="棉">棉</span>
+                        <span class="option-tag material" data-tag="丝绸">丝绸</span>
+                        <span class="option-tag material" data-tag="牛仔">牛仔</span>
+                        <span class="option-tag material" data-tag="麻">麻</span>
+                        <span class="option-tag material" data-tag="羊毛">羊毛</span>
+                        <span class="option-tag material" data-tag="皮革">皮革</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="custom-tags">自定义标签</label>
+                    <input type="text" id="custom-tags" placeholder="用逗号分隔多个标签">
+                </div>
+                
+                <button type="submit" id="submit-btn">保存</button>
+            </form>
+        </aside>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
